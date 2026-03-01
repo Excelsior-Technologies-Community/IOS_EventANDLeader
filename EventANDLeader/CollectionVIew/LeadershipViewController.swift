@@ -9,17 +9,32 @@ import UIKit
 
 class LeadershipViewController: UIViewController{
  
+    @IBOutlet weak var CView: UIView!
     let leaders = [
-        ("Dr. Devanshu Patel", "President", "person1"),
-        ("Dr. Parul Patel", "Vice President", "person2"),
-        ("Dr. Geetika Patel", "Vice President", "person3"),
-        ("Dr. Komal Patel", "Vice President", "person4"),
+        ("Dr. Devanshu Patel", "President", "ss1"),
+        ("Dr. Parul Patel", "Vice President", "ss2"),
+        ("Dr. Geetika Patel", "Vice President", "ss3"),
+        ("Dr. Devanshu Patel", "President", "ss1"),
+        ("Dr. Parul Patel", "Vice President", "ss2"),
+        ("Dr. Geetika Patel", "Vice President", "ss3"),
+        ("Dr. Devanshu Patel", "President", "ss1"),
+        ("Dr. Parul Patel", "Vice President", "ss2"),
+        ("Dr. Geetika Patel", "Vice President", "ss3"),
+        ("Dr. Devanshu Patel", "President", "ss1"),
+        ("Dr. Parul Patel", "Vice President", "ss2"),
+        ("Dr. Geetika Patel", "Vice President", "ss3"),
+        
+      
     ]
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+         
+//        view.backgroundColor = UIColor.systemGroupedBackground
+        CView.backgroundColor = UIColor.systemGroupedBackground
+        collectionView.backgroundColor = UIColor.systemGroupedBackground
         // Do any additional setup after loading the view.
         collectionView.register(UINib(nibName: "LeadershipCell", bundle: nil), forCellWithReuseIdentifier: "LeadershipCell")
         collectionView.dataSource = self
@@ -52,24 +67,30 @@ extension LeadershipViewController: UICollectionViewDelegateFlowLayout, UICollec
                             image: UIImage(named: data.2))
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView,
-                          layout collectionViewLayout: UICollectionViewLayout,
-                          sizeForItemAt indexPath: IndexPath) -> CGSize {
-          
-          let padding: CGFloat = 16
-          let spacing: CGFloat = 12
-          
-          let totalSpacing = padding + padding + spacing
-          let width = (collectionView.frame.width - totalSpacing) / 2
-          
-          return CGSize(width: width, height: 220)
-      }
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let interitemSpacing: CGFloat = 10   // ⬇️ reduced from 16
+        let width = floor((collectionView.bounds.width - interitemSpacing) / 2)
+
+        return CGSize(width: width, height: 220)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)  // ⬅️ remove left/right insets here
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10  // ✅ must match interitemSpacing above
+    }
       
     
       
-      func collectionView(_ collectionView: UICollectionView,
-                          layout collectionViewLayout: UICollectionViewLayout,
-                          minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-          return 12
-      }
+    
 }

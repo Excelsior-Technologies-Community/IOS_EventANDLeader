@@ -15,7 +15,7 @@ class LeadershipCell: UICollectionViewCell {
         
         override func awakeFromNib() {
             super.awakeFromNib()
-            
+            nameLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
             containerView.layer.cornerRadius = 12
             containerView.layer.shadowColor = UIColor.black.cgColor
             containerView.layer.shadowOpacity = 0.08
