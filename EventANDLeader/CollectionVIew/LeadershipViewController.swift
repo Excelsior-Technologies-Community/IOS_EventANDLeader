@@ -50,13 +50,7 @@ extension LeadershipViewController: UICollectionViewDelegateFlowLayout, UICollec
         return leaders.count
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
-    }
-    
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeadershipCell", for: indexPath) as! LeadershipCell
@@ -68,29 +62,39 @@ extension LeadershipViewController: UICollectionViewDelegateFlowLayout, UICollec
         return cell
     }
     
+      
+      
+    
+      
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let interitemSpacing: CGFloat = 10   // ⬇️ reduced from 16
-        let width = floor((collectionView.bounds.width - interitemSpacing) / 2)
+        let totalWidth = collectionView.bounds.width
+        let interitemSpacing: CGFloat = totalWidth * 0.04
+        let width = floor((totalWidth - interitemSpacing) / 2)
+        let height = width * 1.35
 
-        return CGSize(width: width, height: 220)
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)  // ⬅️ remove left/right insets here
+        let inset = collectionView.bounds.width * 0.04
+        return UIEdgeInsets(top: inset, left: 0, bottom: inset, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10  // ✅ must match interitemSpacing above
+        return collectionView.bounds.width * 0.04  // ✅ must match interitemSpacing above
     }
-      
-    
-      
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return collectionView.bounds.width * 0.04  // vertical gap between rows
+    }
     
 }
