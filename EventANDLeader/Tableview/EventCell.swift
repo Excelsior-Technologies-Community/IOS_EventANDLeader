@@ -30,13 +30,13 @@ class EventCell: UITableViewCell {
     private func setupUI() {
         
         // Card style
-        containerView.layer.cornerRadius = 12
+        containerView.layer.cornerRadius = 10
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOpacity = 0.08
         containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerView.layer.shadowRadius = 6
         containerView.layer.masksToBounds = false
-        
+        registerLabel.textAlignment = .right
         // Image corner
         eventImageView.clipsToBounds = true
 //        eventImageView.layer.cornerRadius = 10

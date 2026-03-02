@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tbVIew.dequeueReusableCell(withIdentifier: "EventCell" , for: indexPath ) as! EventCell
         
                cell.titleLabel.text = "Dhoom 2025 – Annual Cultural Festival"
-               cell.descriptionLabel.text = "A vibrant cultural fest featuring music, dance, theatre, comedy shows, art zones and a food carnival."
+               cell.descriptionLabel.text = "A vibrant cultural fest featuring music, dance, theatre, comedy shows, art zones and a food carnival.dance, theatre, comedy shows, art zones and a food carnival."
                cell.registerLabel.text = "In App Registration | External Link"
                
                cell.eventImageView.image = UIImage(named: "IMG")
